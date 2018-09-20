@@ -1,0 +1,49 @@
+		<div class="container">
+				
+			<header>
+				<h1><span>{{title}}</h1>
+				<h2>Select the Items your would like to purchase</h2>
+			</header>
+
+			<div class = "container-fluid">
+				<div class="row">
+					<div class = "col s3 m4">
+							<a class="btn-floating btn-large cyan pulse"><i class="material-icons">shopping_cart</i></a>
+							<a href="/home" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- Below is where there will be cards for the items we want to sell -->
+			
+		<div class="container-fluid">
+			<div class="row">
+				{{#each rowOne}}
+
+                {{/each}}
+			</div>
+			<div class="row">
+                {{#each rowTwo}}
+                
+                {{/each}}
+			</div>
+		</div>
+		</div>
+
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col s3 m4">
+						<div class="card">
+							<div class="card-image" id="imageURL">
+								<img src="{{imageurl}}">
+								<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+							</div>
+							<div class="card-content">
+								<span class="card-title" id="itemName"></span>
+								<p>Item name should appear from the database.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
