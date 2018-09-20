@@ -2,7 +2,9 @@
 var express = require("express");
 var bodyParser = require('body-parser');
 var path = require("path");
-var connection = require("./connection");
+var connection = require("./config/connection");
+var session = require('express-session');
+var db = require("./models");
 var passport = require("passport");
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
@@ -26,7 +28,7 @@ app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
-  }));
+}));
 
 
 app.use(passport.initialize());
@@ -43,23 +45,23 @@ app.get("/test", function (req, res) {
 });
 
 // process the login form
-app.post('/login', passport.authenticate('local', { 
-        failureRedirect : '/', // redirect back to the signup page if there is an error
-        }), function(req, res) {
-            console.log(req.user);
-            res.redirect('/test');
-        });
+app.post('/login', passport.authenticate('local', {
+    failureRedirect: '/', // redirect back to the signup page if there is an error
+}), function (req, res) {
+    console.log(req.user);
+    res.redirect('/test');
+});
 
 // CHANGE ROUTE
-app.get("/newuser/:username/:password", function(req,res) {
+app.get("/newuser/:username/:password", function (req, res) {
     console.log(req.params);
     var password = req.params.password;
-    bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(password, salt, function(err, hash) {
+    bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(password, salt, function (err, hash) {
             console.log(password);
             // Store hash in your password DB.
-            connection.query("INSERT INTO users (username, password) VALUES (?,?)", [req.params.username, hash], function(err, results) {
-                if(err) console.log(err);
+            db.Post.create("INSERT INTO users (username, password) VALUES (?,?)", [req.params.username, hash], function (err, results) {
+                if (err) console.log(err);
                 console.log(results);
             });
         });
@@ -67,7 +69,9 @@ app.get("/newuser/:username/:password", function(req,res) {
     res.redirect("/");
 });
 
-app.listen(PORT, function () {
-    // Log (server-side) when our server has started
-    console.log("Server listening on: http://localhost:" + PORT);
+
+db.sequelize.sync({ force: true }).then(function () {
+    app.listen(PORT, function () {
+        console.log("App listening on PORT " + PORT);
+    });
 });
