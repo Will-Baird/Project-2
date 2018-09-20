@@ -82,7 +82,7 @@ module.exports = function (app) {
         db.holder.create({
             product_name: req.body.product_name,
             description: req.body.description,
-            url: req.body.url,
+            img_url: req.body.url,
             department: req.body.department,
             price: req.body.price,
             quantity: req.body.quantity
