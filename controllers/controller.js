@@ -98,7 +98,15 @@ module.exports = function (app) {
         var newQuantity = oldQuantity - totalBought;
         // need to put change↑ req.body
         if (newQuantity < 0) {
-            // error message
+            return console.log('Wrong quantity')
+        }
+        else if (newQuantity = 0) {
+            db.products.update(
+                { quantity: newQuantity },
+                { where: { id: req.body.id } }
+            ).then(function (put) {
+                res.direct('/api/delete/zero');
+            });
         }
         else {
             db.products.update(
@@ -110,8 +118,17 @@ module.exports = function (app) {
         };
     });
 
-    
+
     app.delete('/api/delete', function (req, res) {
+        db.products.destroy({
+            where: { id: req.body.id }
+        }).then(function (x) {
+            res.json(x)
+        });
+    });
+
+
+    app.delete('/api/delete/zero', function (req, res) {
         db.products.destroy({
             where: { id: req.body.id }
         }).then(function (x) {
