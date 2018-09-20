@@ -9,7 +9,7 @@ module.exports = function (app) {
 
     app.get("/api/fashion", function (req, res) {
         var handlebarsObj = [];
-        db.holder.findAll({
+        db.products.findAll({
             where: { department: 'fashion' }
         }).then(function (results) {
             results.forEach(function (item) {
@@ -24,7 +24,7 @@ module.exports = function (app) {
     app.get("/api/sports", function (req, res) {
 
         var handlebarsObj = [];
-        db.holder.findAll({
+        db.products.findAll({
             where: { department: 'sports' }
         }).then(function (results) {
             results.forEach(function (item) {
@@ -38,7 +38,7 @@ module.exports = function (app) {
 
     app.get("/api/books", function (req, res) {
         var handlebarsObj = [];
-        db.holder.findAll({
+        db.products.findAll({
             where: { department: 'books' }
         }).then(function (results) {
             results.forEach(function (item) {
@@ -52,7 +52,7 @@ module.exports = function (app) {
 
     app.get("/api/cars", function (req, res) {
         var handlebarsObj = [];
-        db.holder.findAll({
+        db.products.findAll({
             where: { department: 'cars' }
         }).then(function (results) {
             results.forEach(function (item) {
@@ -66,7 +66,7 @@ module.exports = function (app) {
 
     app.get("/api/electronics", function (req, res) {
         var handlebarsObj = [];
-        db.holder.findAll({
+        db.products.findAll({
             where: { department: 'electronics' }
         }).then(function (results) {
             results.forEach(function (item) {
@@ -79,7 +79,7 @@ module.exports = function (app) {
 
 
     app.post("/api/post", function (req, res) {
-        db.holder.create({
+        db.products.create({
             product_name: req.body.product_name,
             description: req.body.description,
             img_url: req.body.url,
@@ -101,7 +101,7 @@ module.exports = function (app) {
             // error message
         }
         else {
-            db.holder.update(
+            db.products.update(
                 { quantity: newQuantity },
                 { where: { id: req.body.id } }
             ).then(function (put) {
@@ -112,7 +112,7 @@ module.exports = function (app) {
 
     
     app.delete('/api/delete', function (req, res) {
-        db.holder.destroy({
+        db.products.destroy({
             where: { id: req.body.id }
         }).then(function (x) {
             res.json(x)
