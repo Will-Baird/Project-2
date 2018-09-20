@@ -3,10 +3,11 @@ var express = require("express");
 var bodyParser = require('body-parser');
 var path = require("path");
 var connection = require("./config/connection");
+var session = require('express-session');
+var db = require("./models");
 var passport = require("passport");
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
-var db = require("./models");
 
 require("./config/passport.js")(passport);
 
