@@ -3,57 +3,120 @@ var db = require("../models");
 
 module.exports = function (app) {
     app.get("/", function (req, res) {
-        // orm for aplicable  get route
+
         res.render('index', handlebarsObj)
     });
 
 
     app.get("/api/fashion", function (req, res) {
-        // orm for aplicable  get route
+        var handlebarsObj = [];
+        db.holder.findAll({
+            where: { department: 'fashion' }
+        }).then(function (results) {
+            results.forEach(function (item) {
+                handlebarsObj.push(item)
+            })
+        })
         // replace with new handlebars↓
         res.render('searchResults', handlebarsObj)
     });
 
 
     app.get("/api/sports", function (req, res) {
-        // orm for aplicable  get route
+
+        var handlebarsObj = [];
+        db.holder.findAll({
+            where: { department: 'sports' }
+        }).then(function (results) {
+            results.forEach(function (item) {
+                handlebarsObj.push(item)
+            })
+        })
         // replace with new handlebars↓
         res.render('searchResults', handlebarsObj)
     });
 
 
     app.get("/api/books", function (req, res) {
-        // orm for aplicable  get route
+        var handlebarsObj = [];
+        db.holder.findAll({
+            where: {department:'books'}
+        }).then(function(results){
+            results.forEach(function(item){
+                handlebarsObj.push(item)
+            })
+        })
         // replace with new handlebars↓
         res.render('searchResults', handlebarsObj)
     });
 
 
     app.get("/api/cars", function (req, res) {
-        // orm for aplicable  get route
+        var handlebarsObj = [];
+        db.holder.findAll({
+            where: {department:'cars'}
+        }).then(function(results){
+            results.forEach(function(item){
+                handlebarsObj.push(item)
+            })
+        })
         // replace with new handlebars↓
         res.render('searchResults', handlebarsObj)
     });
 
 
     app.get("/api/electronics", function (req, res) {
-        // orm for aplicable  get route
+        var handlebarsObj = [];
+        db.holder.findAll({
+            where: {department:'electronics'}
+        }).then(function(results){
+            results.forEach(function(item){
+                handlebarsObj.push(item)
+            })
+        })
         // replace with new handlebars↓
         res.render('searchResults', handlebarsObj)
     });
 
     app.post("/api/post", function (req, res) {
+        db.holder.create({
+            product_name: req.body.product_name,
+            description: req.body.description,
+            url:req.body.url,
+            department: req.body.department,
+            price: req.body.price,
+            quantity: req.body.quantity
 
-        // orm for new item
+        })
+        
 
     });
 
     app.put('/api/buy', function (req, res) {
-        // orm for updating productNumber
+        var totalBought = parseInt(req.body.totalBought)
+        var oldQuantity = parseInt(req.body.oldQuantity)
+    
+        var newQuantity = oldQuantity - totalBought;
+        if(newQuantity<0){
+            // error message
+        }
+        else {
+            db.holder.update(
+                {quantity: newQuantity },
+                {where: {id:req.body.id}}
+            ).then(function(put){
+                res.json(put)
+            })
+        }
+
     });
 
-    app.delete('/api/delete', function(req,res){
-        // orm for delete route
+    app.delete('/api/delete', function (req, res) {
+       db.holder.destroy({
+           where:{id:req.body.id}
+       }).then(function(x){
+           res.json(x)
+       })
     })
 
 }
