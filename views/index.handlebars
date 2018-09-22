@@ -1,30 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-		<meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <title>Title to be determined</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <meta name="description" content="Animated Swatch Book with CSS3 and jQuery" />
-        <meta name="keywords" content="swatch book, css3, jquery, animated, rotation, transition, folding fan" />
-        <meta name="author" content="Codrops" />
-        <link rel="shortcut icon" href="../favicon.ico"> 
-        <link rel="stylesheet" type="text/css" href="css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="css/style3.css" />
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> 
-
-
-		<!-- Materialize Links -->
-		   <!-- Compiled and minified CSS -->
-		   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-		   <!-- Compiled and minified JavaScript -->
-		   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-		<!--[if lte IE 8]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
-    </head>
     <body>
         <div class="container">
 			
@@ -60,37 +35,37 @@
 					<div>
 						<span class="sb-icon icon-globe"></span>
 						<h4><span>Sell Your Items</span></h4>
-						<button><a href="/public/assets/SwatchBook 2/sellerform.html">Sell Your Item</a></button>
+						<button><a href="/api/post">Sell Your Item</a></button>
 					</div>	
 					<div>
 						<span class="sb-icon icon-picture"></span>
 						<h4><span>Cars</span></h4>
-						<button><a href="/public/assets/SwatchBook 2/cars.html">Check It Out</a></button>										
+						<button><a href="/api/cars">Check It Out</a></button>										
 					</div>	
 					<div>
 						<span class="sb-icon icon-video"></span>
 						<h4><span>Books</span></h4>	
-						<button><a href="/public/assets/SwatchBook 2/books.html">Check It Out</button>									
+						<button><a href="/api/books">Check It Out</button>									
 					</div>	
 					<div>
 						<span class="sb-icon icon-download"></span>
 						<h4><span>Sports/Outdoors</span></h4>
-						<button><a href="/public/assets/SwatchBook 2/sports.html">SCheck It Out</a></button>
+						<button><a href="/api/sports">SCheck It Out</a></button>
 					</div>	
 					<div>
 						<span class="sb-icon icon-mobile"></span>
 						<h4><span>Electronic</span></h4>
-						<button><a href="/public/assets/SwatchBook 2/electronics.html">Check It Out</a></button>											
+						<button><a href="/api/electronics">Check It Out</a></button>											
 					</div>
 					<div>
 						<span class="sb-icon icon-camera"></span>
 						<h4><span>Fashion Wear</span></h4>	
-						<button><a href="/public/assets/SwatchBook 2/fashionwear.html">Check It Out</a></button>										
+						<button><a href="/api/fashion">Check It Out</a></button>										
 					</div>
 					<div>
 						<span class="sb-toggle">Click to open/close</span>
 						<h4><span>Profile</span></h4>
-						<button id="userLogin">Login</button>
+						<button id="userLogin"><a href="/login">Login</a></button>
 						<h5>Welcome</h5>											
 					</div>
 					
@@ -101,7 +76,7 @@
 			
         </div>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.swatchbook.js"></script>
+		<script type="text/javascript" src="./assets/SwatchBook2/js/jquery.swatchbook.js"></script>
 		<script type="text/javascript">
 			$(function() {
 			

@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
         img_url: DataTypes.STRING,
         department: DataTypes.STRING,
         price: DataTypes.INTEGER,
-        quantity: DataTypes.INTEGER
+        quantity: DataTypes.INTEGER,
     });
     return product;
 };

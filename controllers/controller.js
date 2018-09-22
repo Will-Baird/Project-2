@@ -1,9 +1,11 @@
-
+// Packages and modules we need
 var db = require("../models");
 
-module.exports = function (app) {
+var bcrypt = require('bcryptjs');
+
+module.exports = function (app, passport) {
     app.get("/", function (req, res) {
-        res.render('index', handlebarsObj)
+        res.render('index');
     });
 
 
@@ -135,4 +137,33 @@ module.exports = function (app) {
             res.json(x)
         });
     });
-};
+
+    app.get("/login", function (req, res) {
+        res.render('login');
+    });
+
+    // Process the login form
+    app.post('/login', passport.authenticate('local', {
+        failureRedirect: '/login', // redirect back to the signup page if there is an error
+    }), function (req, res) {
+        console.log(req.user);
+        res.redirect('/');
+    });
+
+// // CHANGE ROUTE
+    app.get("/newuser/:first/:username/:password/:phone", function (req, res) {
+        var name = req.params.first;
+        var user = req.params.username;
+        var password = req.params.password;
+        var phone = req.params.phone;
+
+        // Encryption
+        bcrypt.genSalt(10, function (err, salt) {
+            bcrypt.hash(password, salt, function (err, hash) {
+                // Store hash in your password DB.
+                db.users.create({first_name:name, username:user, password:hash, phone_number:phone}).then(res.redirect("/login"));
+            }); // bcrypt.hash
+        }); // bcrypt.genSalt
+    }); // app.get
+  
+}; // module.exports
