@@ -9,6 +9,11 @@ module.exports = function (app, passport) {
     });
 
 
+    app.get("/seller", function (req, res) {
+        res.render('seller');
+    });
+
+
     app.get("/api/fashion", function (req, res) {
         var handlebarsObj = [];
         db.products.findAll({
@@ -65,7 +70,7 @@ module.exports = function (app, passport) {
         res.render('products', handlebarsObj)
     });
 
-
+ 
     app.get("/api/electronics", function (req, res) {
         var handlebarsObj = [];
         db.products.findAll({

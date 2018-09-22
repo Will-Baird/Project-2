@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col s3 m4">
+            <a class="btn-floating btn-large cyan pulse"><i class="material-icons">shopping_cart</i></a>
+        </div>
+    </div>
+</div>
+
+<div class="formHolder">
+
+    <div class="wholeForm">
+
+        <form name="form">
+            <div class="form-group">
+                <label for="product_name">Product Name:</label>
+                <input type="text" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea type="text" name="description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="img_url">URL to Image</label>
+                <input type="text" name="img_url">
+            </div>
+
+
+
+            <div class="selector">
+                <label for="department">Department:</label>
+                <select name="department" id="selector" form="form" size="5">
+                    <option value="fashion">Fashion Wear</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="sports">Sports/Outdoors</option>
+                    <option value="books">Books</option>
+                    <option value="cars">Cars</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" min="0.01" step="0.01" value="9.99" name="price">
+            </div>
+        </form>
+    </div>
+</div>
+{{!-- move later --}}
+<style>
+    .formHolder {
+        width: 100%;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .wholeForm {
+        max-width: 960px;
+        margin: auto;
+    }
+
+    .formGroup {
+        color: black;
+    }
+</style>
