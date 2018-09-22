@@ -1,9 +1,8 @@
-// config/passport.js
-				
 // load all the things we need
 var Strategy   = require('passport-local').Strategy;
 
-var connection = require("./connection");	
+// var connection = require("./connection");	
+var db = require("../models");
 
 var bcrypt = require('bcryptjs');
 
@@ -11,19 +10,19 @@ var bcrypt = require('bcryptjs');
 module.exports = function (passport) {
   passport.use(new Strategy(
       function (username, password, cb) {
-        connection.query("SELECT * FROM users WHERE username = ?", [username], function(err, results) {
-          if(err) {return cb(err)};
-          if(results.length === 0) {return cb(err)};
+        db.users.findAll({where: {username: username}}).then(function(users) {
+          // if(err) {return cb(err)};
+          // if(results.length === 0) {return cb(err)};
+          if(!users[0]) {return cb()};
 
-          bcrypt.compare(password, results[0].password, function(err, res) {
-            console.log(res);
-            let user = results[0];
+          bcrypt.compare(password, users[0].dataValues.password, function(err, res) {
+            let user = users[0].dataValues;
+            // If the password is incorrect
             if(res === false) {return cb(err)};
+
             return cb(null, user);
           }); // bcrypt.compare
-
-        }); // connection.query
-          
+        }); // .then function          
       })); // passport.use
 
   passport.serializeUser(function (user, cb) {
@@ -31,11 +30,10 @@ module.exports = function (passport) {
   });
 
   passport.deserializeUser(function (id, cb) {
-      connection.query("SELECT * FROM users where id = ?", [id], function (err, results) {
-          let user = results[0];
-          if (err) { return cb(err); }
-          cb(null, user);
-      });
-  });
+    db.users.findAll({where: {id: id}}).then(function(users) {
+        let user = users[0].dataValues;
+        cb(null, user);
+    });
+  }); // passport.deserializeUser
 
 }; // module.exports
