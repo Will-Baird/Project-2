@@ -1,10 +1,9 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col s3 m4">
-            <a class="btn-floating btn-large cyan pulse"><i class="material-icons">shopping_cart</i></a>
-        </div>
-    </div>
+
+<div class="titleDiv">
+    <h1>Sell Something</h1>
 </div>
+<a href="/" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
+
 
 <div class="formHolder">
 
@@ -13,24 +12,25 @@
         <form name="form">
             <div class="form-group">
                 <label for="product_name">Product Name:</label>
-                <input type="text" name="name">
+                <input id="product_name" type="text" name="name" required>
             </div>
 
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea type="text" name="description"></textarea>
+                <textarea id="description" class="materialize-textarea" type="text" name="description" required></textarea>
             </div>
 
             <div class="form-group">
-                <label for="img_url">URL to Image</label>
-                <input type="text" name="img_url">
+                <label for="imgURL">URL to Image</label>
+                <input id="imgURL" type="text" name="imgURL" required>
             </div>
 
 
 
             <div class="selector">
                 <label for="department">Department:</label>
-                <select name="department" id="selector" form="form" size="5">
+                <select id="department" name="department" class=".input-field" form="form" size="5" required>
+                    <option value="" selected disabled hidden>Select Department</option>
                     <option value="fashion">Fashion Wear</option>
                     <option value="electronics">Electronics</option>
                     <option value="sports">Sports/Outdoors</option>
@@ -41,25 +41,23 @@
 
             <div class="form-group">
                 <label for="price">Price</label>
-                <input type="number" min="0.01" step="0.01" value="9.99" name="price">
+                <input id="price" type="number" min="0.01" step="0.01" value="9.99" name="price" required> 
             </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input id="quantity" type="number" min="1" step="1" value="1" name="quantity" required>
+            </div>
+
+            <a href="/api/post"> <button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button></a>
         </form>
     </div>
 </div>
-{{!-- move later --}}
-<style>
-    .formHolder {
-        width: 100%;
-        justify-content: center;
-        align-content: center;
-    }
 
-    .wholeForm {
-        max-width: 960px;
-        margin: auto;
-    }
 
-    .formGroup {
-        color: black;
-    }
-</style>
+
+{{!-- jquery --}}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous" ></script>
