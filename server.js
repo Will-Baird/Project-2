@@ -9,6 +9,7 @@ var passport = require("passport");
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
 
+var app = express();
 
 var exphbs = require("express-handlebars");
 
@@ -18,7 +19,6 @@ app.set("view engine", "handlebars");
 
 require("./config/passport.js")(passport);
 
-var app = express();
 
 //CREATE STATIC VERSION OF YOUR ASSETS FOLDER FOR EXPRESS HTTP SERVER TO ACCESS
 app.use(express.static('public'));
@@ -42,9 +42,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "./index.html"));
-});
+// app.get("/", function (req, res) {
+//     res.sendFile(path.join(__dirname, "./index.html"));
+// });
 
 app.get("/test", function (req, res) {
     console.log(req.user);
