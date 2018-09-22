@@ -9,6 +9,13 @@ var passport = require("passport");
 var session = require('express-session');
 var bcrypt = require('bcryptjs');
 
+
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
 require("./config/passport.js")(passport);
 
 var app = express();
@@ -70,7 +77,7 @@ app.get("/newuser/:username/:password", function (req, res) {
 });
 
 
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync().then(function () {
     app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });

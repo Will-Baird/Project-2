@@ -17,7 +17,7 @@ module.exports = function (app) {
             });
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        res.render('products', handlebarsObj)
     });
 
 
@@ -32,7 +32,7 @@ module.exports = function (app) {
             });
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        res.render('products', handlebarsObj)
     });
 
 
@@ -46,7 +46,7 @@ module.exports = function (app) {
             });
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        res.render('products', handlebarsObj)
     });
 
 
@@ -60,7 +60,7 @@ module.exports = function (app) {
             });
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        res.render('products', handlebarsObj)
     });
 
 
@@ -74,7 +74,7 @@ module.exports = function (app) {
             });
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        res.render('products', handlebarsObj)
     });
 
 
