@@ -1,36 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-		<meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <title>Title to be determined</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <meta name="description" content="Animated Swatch Book with CSS3 and jQuery" />
-        <meta name="keywords" content="swatch book, css3, jquery, animated, rotation, transition, folding fan" />
-        <meta name="author" content="Codrops" />
-        <link rel="shortcut icon" href="../favicon.ico"> 
-        <link rel="stylesheet" type="text/css" href="css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="css/style3.css" />
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> 
-
-
-		<!-- Materialize Links -->
-		   <!-- Compiled and minified CSS -->
-		   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-		   <!-- Compiled and minified JavaScript -->
-		   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-		<!--[if lte IE 8]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
-    </head>
-    <body>
+     <body>
         <div class="container">
 			
 	<header>
 			
-				<h1>App name to be determined</h1>
+				<h1 id="appTitle">eShop It</h1>
 				
 				<div class="support-note"><!-- let's check browser support with modernizr -->
 					<!--span class="no-cssanimations">CSS animations are not supported in your browser</span-->
@@ -39,58 +12,186 @@
 					<span class="no-csstransitions">CSS transitions are not supported in your browser</span>
 					<span class="note-ie">Sorry, only modern browsers.</span>
 				</div>
-			</header>
+	</header>
+	
+{{!-- Shopping cart button to trigger the sidenav
+			<nav> <!-- navbar content here  --> </nav>
 
-			<div class = "container-fluid">
-					<div class="row">
-						<div class = "col s3 m4">
-								<a class="btn-floating btn-large cyan pulse"><i class="material-icons">shopping_cart</i></a>
-						</div>
-					</div>
-				</div>
+  <ul id="slide-out" class="sidenav">
+      <div class="container center">
+          <div class="col-sm-12">
+              <div class="row" id="nameSection">
+                  <div class="userNameHolder">
+                      <h3>John Doe</h3>
+                  </div>
+              </div>
+              <hr>
+              <div class="row" id="itemSection">
+                  <div class="itemSectionTitle">
+                      <h3>Items Ready for Purchase:</h3>
+                  </div>
+              </div>
+              <div class="row" id="itemList">
+                  <div class="itemListHolder">
+                  </div>
+              </div>
+              <div class="row" id="totalCost">
+                  <div class="totalCostHolder">
+                      <h3>Total Cost:</h3>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <li><div class="user-view">
+      
+  </ul>
+ 
+  
+  <a href="#" data-target="slide-out" class="sidenav-trigger btn-floating btn-large cyan pulse"><i class="material-icons">shopping_cart</i></a> --}}
+
+
+								
+{{!--Login and Register Modal  --}}                           
+              <!-- Modal Trigger -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col s12">
+                        <a href="#login"  class="btn btn-large teal modal-trigger" id="modal">Login</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <h6 id="newUser">New User?</h6>
+                        <a href="#register" class="btn btn-small teal modal-trigger" id="modal">Signup</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="login">
+               <div class='modal-content center'> 
+                 <h4>Login Below:</h4>
+                    <div class="row">
+                         <div class="input-field col s12">
+                           <input id="email" type="email" class="validate">
+                           <label for="email">Email</label>
+                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                           <input id="password" type="password" class="validate">
+                           <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light red" type="submit" name="action"  id="closeBtn">Cancel
+                           <i class="material-icons right">close</i>
+                        </button>
+                        <button class="btn waves-effect waves-light teal" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>     
+            </div>
+        </div>     
+    
+
+                <!-- Code for User Registration Modal -->
+                <div class = "container-fluid">
+                                  <!-- Modal Trigger -->
+                                <div class="modal" id="register">
+                                   <div class='modal-content center'> 
+                                     <h4>Register Below:</h4>
+                                          <div class="row">
+                                            <form class="col s12">
+		                                         <div class="row">
+				                                    <div class="input-field col s12">
+			 		                                    <input id="first_name" type="text" class="validate">
+			  	                                        <label for="first_name">First and Last Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-field col s12">
+                                                    <input id="newEmail" type="email" class="validate">
+                                                    <label for="email">Email</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                        <div class="input-field col s12">
+                                                        <input id="newPassword" type="password" class="validate">
+                                                        <label for="password">Password</label>
+                                                        </div>
+                                                </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                            <input id="newPhoneNumber" type="number" class="validate">
+                                                        <label for="phoneNumber">Phone Number (XXX-XXX-XXXX)</label>
+                                                        </div>
+                                                    </div>	
+                                                    <div class="row">
+                                                        <button class="btn waves-effect waves-light red" type="submit" name="action" id="closeBtn">Cancel
+                                                        <i class="material-icons right">close</i>
+                                                        </button>
+                                                        <button class="btn waves-effect waves-light teal" type="submit" name="action">Submit
+                                                        <i class="material-icons right">send</i>
+                                                        </button>
+                                                    </div>
+                                                </div>     
+                                            </div>
+                                        </div>     
+                                    </div>
+	</div>
+			</div>	
 			
+
+
+{{!-- Landing page layout below --}}
+
+
 			<section class="main">
 			
 				<div id="sb-container" class="sb-container">
 					<div>
-						<span class="sb-icon icon-bag"></span>
 						<h4><span>About Us</span></h4>
-						<button id="aboutUs">Check it out</button>
+                        <i class="material-icons" id="swatchIcon">people_outline</i>
+						<button class="directionBtn">Check it out</button>
+					</div>	
+                    <div>
+						<h4><span>Your Items For Sale</span></h4>
+                        <i class="material-icons" id="swatchIcon">account_box</i>
+						<button class="directionBtn"><a href="/api/fashion">Your Items</a></button>
 					</div>	
 					<div>
-						<span class="sb-icon icon-globe"></span>
 						<h4><span>Sell Your Items</span></h4>
-						<button><a href="/public/assets/SwatchBook 2/sellerform.html">Sell Your Item</a></button>
+                        <i class="material-icons" id="swatchIcon">attach_money</i>
+						<button class="directionBtn"><a href="/api/fashion">Sell Your Item</a></button>
 					</div>	
 					<div>
-						<span class="sb-icon icon-picture"></span>
 						<h4><span>Cars</span></h4>
-						<button><a href="/public/assets/SwatchBook 2/cars.html">Check It Out</a></button>										
+                        <i class="material-icons" id="swatchIcon">directions_car</i>
+						<button class="directionBtn"><a href="/api/cars" >Check It Out</a></button>										
 					</div>	
 					<div>
-						<span class="sb-icon icon-video"></span>
 						<h4><span>Books</span></h4>	
-						<button><a href="/public/assets/SwatchBook 2/books.html">Check It Out</button>									
+                        <i class="material-icons" id="swatchIcon">book</i>
+						<button  class="directionBtn" ><a href="/api/books">Check It Out</button>									
 					</div>	
 					<div>
-						<span class="sb-icon icon-download"></span>
-						<h4><span>Sports/Outdoors</span></h4>
-						<button><a href="/public/assets/SwatchBook 2/sports.html">SCheck It Out</a></button>
-					</div>	
+						<h4>Sports/Outdoors</h4>	
+                        <i class="material-icons" id="swatchIcon">rowing</i>
+						<button class="directionBtn"><a href="/api/sports">Check It Out</a></button>										
+					</div>
 					<div>
-						<span class="sb-icon icon-mobile"></span>
 						<h4><span>Electronic</span></h4>
-						<button><a href="/public/assets/SwatchBook 2/electronics.html">Check It Out</a></button>											
+                        <i class="material-icons" id="swatchIcon">phone_android</i>
+						<button class="directionBtn"><a href="/api/electronics" >Check It Out</a></button>											
 					</div>
 					<div>
-						<span class="sb-icon icon-camera"></span>
-						<h4><span>Fashion Wear</span></h4>	
-						<button><a href="/public/assets/SwatchBook 2/fashionwear.html">Check It Out</a></button>										
+						<h4>Fashion Wear</h4>	
+                        <i class="material-icons" id="swatchIcon">face</i>
+						<button class="directionBtn"><a href="/api/fashion" >Check It Out</a></button>										
 					</div>
 					<div>
-						<span class="sb-toggle">Click to open/close</span>
-						<h4><span>Profile</span></h4>
-						<button id="userLogin">Login</button>
+						<span class="sb-toggle">Click To Open</span>
 						<h5>Welcome</h5>											
 					</div>
 					
@@ -100,15 +201,15 @@
 			</section>
 			
         </div>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.swatchbook.js"></script>
+        
+		<script type="text/javascript" src="/assets/SwatchBook 2/js/jquery.swatchbook.js"></script>
 		<script type="text/javascript">
 			$(function() {
 			
 				$( '#sb-container' ).swatchbook( {
 					// number of degrees that is between each item
 					angleInc : 30,
-					neighbor : 25,
+					neighbor : 15,
 					// if it should be closed by default
 					initclosed : true,
 					// index of the element that when clicked, triggers the open/close function
@@ -119,4 +220,4 @@
 			});
 		</script>
     </body>
-</html>
+	</html>

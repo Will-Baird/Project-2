@@ -1,13 +1,12 @@
 // Require npm packages
 var express = require("express");
 var bodyParser = require('body-parser');
-var path = require("path");
-var connection = require("./config/connection");
 var session = require('express-session');
 var db = require("./models");
 var passport = require("passport");
 var session = require('express-session');
-var bcrypt = require('bcryptjs');
+var routes = require("./controllers/controller.js");
+var exphbs  = require('express-handlebars');
 
 require("./config/passport.js")(passport);
 
@@ -24,6 +23,9 @@ var PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 app.use(session({
     secret: 'secret',
     resave: false,
@@ -34,43 +36,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+routes(app, passport);
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "./index.html"));
-});
-
-app.get("/test", function (req, res) {
-    console.log(req.user);
-    res.sendFile(path.join(__dirname, "./test.html"));
-});
-
-// process the login form
-app.post('/login', passport.authenticate('local', {
-    failureRedirect: '/', // redirect back to the signup page if there is an error
-}), function (req, res) {
-    console.log(req.user);
-    res.redirect('/test');
-});
-
-// CHANGE ROUTE
-app.get("/newuser/:username/:password", function (req, res) {
-    console.log(req.params);
-    var password = req.params.password;
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(password, salt, function (err, hash) {
-            console.log(password);
-            // Store hash in your password DB.
-            db.Post.create("INSERT INTO users (username, password) VALUES (?,?)", [req.params.username, hash], function (err, results) {
-                if (err) console.log(err);
-                console.log(results);
-            });
-        });
-    });
-    res.redirect("/");
-});
-
-
+// db.sequelize.sync().then(function () {
+//     app.listen(PORT, function () {
+//         console.log("App listening on PORT " + PORT);
+//     });
+// });
 db.sequelize.sync({ force: true }).then(function () {
+    db.products.create({product_name:"Basketball", description:"Shoot like Curry with this.", img_url:"https://images.unsplash.com/photo-1519861531473-9200262188bf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a44a68952e2d3392a3c1e1b366650a11&auto=format&fit=crop&w=1951&q=80", department:"Sports", price:25.00, quantity:20});
+
     app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });

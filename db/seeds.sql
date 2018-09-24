@@ -1,0 +1,11 @@
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Shirt", "Covers upper body", "N/A", "Clothing", 20.00, 100);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Pants", "Covers lower body, goes great with shirts", "N/A", "Clothing", 15.00, 150);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Shoes", "Covers feet", "N/A", "Clothing", 60.00, 50);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Iphone", "Overpriced phone", "N/A", "Electronics", 999.00, 25);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Android", "Another overpriced phone", "N/A", "Electronics", 800.00, 50);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Computer", "Good for work and wasting time", "N/A", "Electronics", 3000.00, 15);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Bike", "Good for transportation and your health", "N/A", "Sports/Outdoors", 1000.00, 10);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Tent", "For if you want to sleep outside", "N/A", "Sports/Outdoors", 400, 50);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Bible", "No description as to not to offend people", "N/A", "Books", 15.00, 500);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Spyker C8 Aileron", "One of my favorite cars that they don't really make anymore", "N/A", "Cars", 200000.00, 5);
+INSERT INTO products (product_name, description, url, department, price, quantity) VALUES ("Lamborghini Countach", "Might be my favorite Lamorghini", "N/A", "Cars", 250000.00, 3);

@@ -1,9 +1,12 @@
-
+// Packages and modules we need
 var db = require("../models");
 
-module.exports = function (app) {
+var bcrypt = require('bcryptjs');
+
+
+module.exports = function (app, passport) {
     app.get("/", function (req, res) {
-        res.render('index', handlebarsObj)
+        res.render('index');
     });
 
 
@@ -17,7 +20,7 @@ module.exports = function (app) {
             });
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        res.render('products', handlebarsObj)
     });
 
 
@@ -25,16 +28,16 @@ module.exports = function (app) {
 
         var handlebarsObj = [];
         db.products.findAll({
-            where: { department: 'sports' }
+            where: { department: 'Sports' }
         }).then(function (results) {
-            results.forEach(function (item) {
-                handlebarsObj.push(item)
-            });
+            // results.forEach(function (item) {
+            //     handlebarsObj.push(item)
+            // });
+            res.render('products', {handlebarsObj:results})
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        // res.render('products', handlebarsObj)
     });
-
 
     app.get("/api/books", function (req, res) {
         var handlebarsObj = [];
@@ -46,7 +49,7 @@ module.exports = function (app) {
             });
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        res.render('products', handlebarsObj)
     });
 
 
@@ -60,7 +63,7 @@ module.exports = function (app) {
             });
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        res.render('products', handlebarsObj)
     });
 
 
@@ -74,7 +77,7 @@ module.exports = function (app) {
             });
         });
         // replace with new handlebars↓
-        res.render('searchResults', handlebarsObj)
+        res.render('products', handlebarsObj)
     });
 
 
@@ -82,7 +85,7 @@ module.exports = function (app) {
         db.products.create({
             product_name: req.body.product_name,
             description: req.body.description,
-            img_url: req.body.url,
+            url: req.body.url,
             department: req.body.department,
             price: req.body.price,
             quantity: req.body.quantity
@@ -135,4 +138,33 @@ module.exports = function (app) {
             res.json(x)
         });
     });
-};
+
+    app.get("/login", function (req, res) {
+        res.render('login');
+    });
+
+    // Process the login form
+    app.post('/login', passport.authenticate('local', {
+        failureRedirect: '/login', // redirect back to the signup page if there is an error
+    }), function (req, res) {
+        console.log(req.user);
+        res.redirect('/');
+    });
+
+// // CHANGE ROUTE
+    app.get("/newuser/:first/:username/:password/:phone", function (req, res) {
+        var name = req.params.first;
+        var user = req.params.username;
+        var password = req.params.password;
+        var phone = req.params.phone;
+
+        // Encryption
+        bcrypt.genSalt(10, function (err, salt) {
+            bcrypt.hash(password, salt, function (err, hash) {
+                // Store hash in your password DB.
+                db.users.create({first_name:name, username:user, password:hash, phone_number:phone}).then(res.redirect("/login"));
+            }); // bcrypt.hash
+        }); // bcrypt.genSalt
+    }); // app.get
+  
+}; // module.exports
