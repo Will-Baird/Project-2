@@ -227,3 +227,80 @@ span.sb-icon:before {
 .icon-download:before { content: '\41'; } /* 'A' */
 .icon-mobile:before { content: '\42'; } /* 'B' */
 .icon-camera:before { content: '\33'; } /* '3' */
+
+
+/* Group CSS code - Not related to swatchbook */
+
+.plus-minus-input {
+	-webkit-align-items: center;
+		-ms-flex-align: center;
+			align-items: center;
+  }
+  
+  .plus-minus-input .input-group-field {
+	text-align: center;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	padding: 1rem;
+  }
+  
+  .plus-minus-input .input-group-field::-webkit-inner-spin-button,
+  .plus-minus-input .input-group-field ::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+			appearance: none;
+  }
+  
+  .plus-minus-input .input-group-button .circle {
+	border-radius: 50%;
+	padding: 0.25em 0.8em;
+  }
+  
+
+#appTitle{
+	font-family: 'Anton', sans-serif;
+	
+} 
+  
+/* Swatch icon css */
+#swatchIcon{
+	width: 100px;
+    height: 100px;
+	font-size: 100px;
+
+}
+
+.directionBtn{
+	border-radius: 25px;
+	box-shadow: 5px 5px 5px black;
+	background-color:#eeeeee;
+	padding: 3%;
+}
+
+
+/* Modal CSS */
+#newUser{
+	display: inline-block;
+	margin-left: 85%;
+	font-size: 20px;
+	
+}
+
+#modal{
+	float: right;
+	display: inline-block;
+	box-shadow: 4px 4px 4px black;
+}
+
+.modal-content{
+	justify-content: center;
+}
+
+
+
+/* back button */
+.homeBtn{
+	float: right;
+}
+
+
+

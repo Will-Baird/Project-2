@@ -32,16 +32,21 @@ module.exports = function (app, passport) {
 
         var handlebarsObj = [];
         db.products.findAll({
-            where: { department: 'sports' }
+            where: { department: 'Sports' }
         }).then(function (results) {
-            results.forEach(function (item) {
-                handlebarsObj.push(item)
-            });
+            // results.forEach(function (item) {
+            //     handlebarsObj.push(item)
+            // });
+            res.render('products', {handlebarsObj:results})
         });
+<<<<<<< HEAD
 
         res.render('products', handlebarsObj)
+=======
+        // replace with new handlebars↓
+        // res.render('products', handlebarsObj)
+>>>>>>> master
     });
-
 
     app.get("/api/books", function (req, res) {
         var handlebarsObj = [];
@@ -89,7 +94,11 @@ module.exports = function (app, passport) {
         db.products.create({
             product_name: req.body.product_name,
             description: req.body.description,
+<<<<<<< HEAD
             img_url: req.body.imgURL,
+=======
+            url: req.body.url,
+>>>>>>> master
             department: req.body.department,
             price: req.body.price,
             quantity: req.body.quantity

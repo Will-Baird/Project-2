@@ -29,13 +29,13 @@
 		// index of initial centered item
 		center : 6,
 		// number of degrees that is between each item
-		angleInc : 8,
-		speed : 700,
+		angleInc : 10,
+		speed : 500,
 		easing : 'ease',
 		// amount in degrees for the opened item's next sibling
 		proximity : 45,
 		// amount in degrees between the opened item's next siblings
-		neighbor : 4,
+		neighbor : 6,
 		// animate on load
 		onLoadAnim : true,
 		// if it should be closed by default
@@ -246,4 +246,6 @@
 		
 	};
 	
+	
+
 } )( jQuery, window );
