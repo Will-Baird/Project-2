@@ -13,9 +13,13 @@ $('#submit').on('click', function (event) {
     price: $('#price').val().trim(),
     quantity: $('#quantity').val().trim()
   }
-
-  $.post('/api/post', newProduct, function(){
-    location.replace('/')
-  })
+ if (newProduct.product_name.val()!=="" && newProduct.description.val()!=="" && imgURL.val()!=="" && newProduct.department.val()!==""){
+   $.post('/api/post', newProduct, function(){
+     location.replace('/')
+   })
+  }
+   else{
+     
+   }
 
 })

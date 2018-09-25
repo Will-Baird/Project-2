@@ -1,4 +1,3 @@
-
 <div class="titleDiv">
     <h1>Sell Something</h1>
 </div>
@@ -12,17 +11,18 @@
         <form name="form">
             <div class="form-group">
                 <label for="product_name">Product Name:</label>
-                <input id="product_name" type="text" name="name" required>
+                <input class="validate" id="product_name" type="text" name="name" required>
             </div>
 
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea id="description" class="materialize-textarea" type="text" name="description" required></textarea>
+                <textarea id="description" class="validate materialize-textarea" type="text" name="description"
+                    required></textarea>
             </div>
 
             <div class="form-group">
                 <label for="imgURL">URL to Image</label>
-                <input id="imgURL" type="text" name="imgURL" required>
+                <input class="validate" id="imgURL" type="text" name="imgURL" required>
             </div>
 
 
@@ -41,7 +41,7 @@
 
             <div class="form-group">
                 <label for="price">Price</label>
-                <input id="price" type="number" min="0.01" step="0.01" value="9.99" name="price" required> 
+                <input id="price" type="number" min="0.01" step="0.01" value="9.99" name="price" required>
             </div>
 
             <div class="form-group">
@@ -58,6 +58,11 @@
 
 
 
+
+
+
+
+
 {{!-- jquery --}}
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous" ></script>
+    crossorigin="anonymous"></script>
