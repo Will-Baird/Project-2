@@ -27,16 +27,16 @@ module.exports = function (app, passport) {
 
         var handlebarsObj = [];
         db.products.findAll({
-            where: { department: 'sports' }
+            where: { department: 'Sports' }
         }).then(function (results) {
-            results.forEach(function (item) {
-                handlebarsObj.push(item)
-            });
+            // results.forEach(function (item) {
+            //     handlebarsObj.push(item)
+            // });
+            res.render('products', {handlebarsObj:results})
         });
         // replace with new handlebars↓
-        res.render('products', handlebarsObj)
+        // res.render('products', handlebarsObj)
     });
-
 
     app.get("/api/books", function (req, res) {
         var handlebarsObj = [];
@@ -84,7 +84,7 @@ module.exports = function (app, passport) {
         db.products.create({
             product_name: req.body.product_name,
             description: req.body.description,
-            img_url: req.body.url,
+            url: req.body.url,
             department: req.body.department,
             price: req.body.price,
             quantity: req.body.quantity
