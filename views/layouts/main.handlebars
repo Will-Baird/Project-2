@@ -9,14 +9,14 @@
         <meta name="keywords" content="swatch book, css3, jquery, animated, rotation, transition, folding fan" />
         <meta name="author" content="Codrops" />
         <link rel="shortcut icon" href="../favicon.ico"> 
-        <link rel="stylesheet" type="text/css" href="/assets/SwatchBook 2/css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/SwatchBook 2/css/style3.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/SwatchBook2/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/SwatchBook2/css/style3.css" />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 
 		<link href='http://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<script type="text/javascript" src="/assets/SwatchBook 2/js/modernizr.custom.79639.js"></script> 
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="/assets/SwatchBook2/js/modernizr.custom.79639.js"></script> 
         <script type="text/javascript" src="/assets/js/app.js"></script> 
        
 
@@ -35,7 +35,23 @@
      <body>
  
     {{{body}}}
-
+		<script type="text/javascript" src="/assets/SwatchBook2/js/jquery.swatchbook.js"></script>
+		<script type="text/javascript">
+			$(function() {
+			
+				$( '#sb-container' ).swatchbook( {
+					// number of degrees that is between each item
+					angleInc : 30,
+					neighbor : 15,
+					// if it should be closed by default
+					initclosed : true,
+					// index of the element that when clicked, triggers the open/close function
+					// by default there is no such element
+					closeIdx : 11
+				} );
+			
+			});
+		</script>
    
     </body>
 
