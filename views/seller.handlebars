@@ -1,0 +1,68 @@
+<div class="titleDiv">
+    <h1>Sell Something</h1>
+</div>
+<a href="/" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
+
+
+<div class="formHolder">
+
+    <div class="wholeForm">
+
+        <form name="form">
+            <div class="form-group">
+                <label for="product_name">Product Name:</label>
+                <input class="validate" id="product_name" type="text" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" class="validate materialize-textarea" type="text" name="description"
+                    required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="imgURL">URL to Image</label>
+                <input class="validate" id="imgURL" type="text" name="imgURL" required>
+            </div>
+
+
+
+            <div class="selector">
+                <label for="department">Department:</label>
+                <select id="department" name="department" class=".input-field" form="form" size="5" required>
+                    <option value="" selected disabled hidden>Select Department</option>
+                    <option value="fashion">Fashion Wear</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="sports">Sports/Outdoors</option>
+                    <option value="books">Books</option>
+                    <option value="cars">Cars</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input id="price" type="number" min="0.01" step="0.01" value="9.99" name="price" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input id="quantity" type="number" min="1" step="1" value="1" name="quantity" required>
+            </div>
+
+            <a href="/api/post"> <button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button></a>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{{!-- jquery --}}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>

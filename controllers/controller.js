@@ -9,6 +9,11 @@ module.exports = function (app, passport) {
     });
 
 
+    app.get("/seller", function (req, res) {
+        res.render('seller');
+    });
+
+
     app.get("/api/fashion", function (req, res) {
         var handlebarsObj = [];
         db.products.findAll({
@@ -18,7 +23,7 @@ module.exports = function (app, passport) {
                 handlebarsObj.push(item)
             });
         });
-        // replace with new handlebars↓
+
         res.render('products', handlebarsObj)
     });
 
@@ -34,8 +39,13 @@ module.exports = function (app, passport) {
             // });
             res.render('products', {handlebarsObj:results})
         });
+<<<<<<< HEAD
+
+        res.render('products', handlebarsObj)
+=======
         // replace with new handlebars↓
         // res.render('products', handlebarsObj)
+>>>>>>> master
     });
 
     app.get("/api/books", function (req, res) {
@@ -47,7 +57,7 @@ module.exports = function (app, passport) {
                 handlebarsObj.push(item)
             });
         });
-        // replace with new handlebars↓
+
         res.render('products', handlebarsObj)
     });
 
@@ -61,7 +71,7 @@ module.exports = function (app, passport) {
                 handlebarsObj.push(item)
             });
         });
-        // replace with new handlebars↓
+
         res.render('products', handlebarsObj)
     });
 
@@ -75,7 +85,7 @@ module.exports = function (app, passport) {
                 handlebarsObj.push(item)
             });
         });
-        // replace with new handlebars↓
+
         res.render('products', handlebarsObj)
     });
 
@@ -84,7 +94,11 @@ module.exports = function (app, passport) {
         db.products.create({
             product_name: req.body.product_name,
             description: req.body.description,
+<<<<<<< HEAD
+            img_url: req.body.imgURL,
+=======
             url: req.body.url,
+>>>>>>> master
             department: req.body.department,
             price: req.body.price,
             quantity: req.body.quantity
@@ -98,7 +112,7 @@ module.exports = function (app, passport) {
         var totalBought = parseInt(req.body.totalBought)
         var oldQuantity = parseInt(req.body.oldQuantity)
         var newQuantity = oldQuantity - totalBought;
-        // need to put change↑ req.body
+        // need to change↑ req.body with actually info
         if (newQuantity < 0) {
             return console.log('Wrong quantity')
         }
@@ -150,7 +164,7 @@ module.exports = function (app, passport) {
         res.redirect('/');
     });
 
-// // CHANGE ROUTE
+    // // CHANGE ROUTE
     app.get("/newuser/:first/:username/:password/:phone", function (req, res) {
         var name = req.params.first;
         var user = req.params.username;
@@ -161,9 +175,9 @@ module.exports = function (app, passport) {
         bcrypt.genSalt(10, function (err, salt) {
             bcrypt.hash(password, salt, function (err, hash) {
                 // Store hash in your password DB.
-                db.users.create({first_name:name, username:user, password:hash, phone_number:phone}).then(res.redirect("/login"));
+                db.users.create({ first_name: name, username: user, password: hash, phone_number: phone }).then(res.redirect("/login"));
             }); // bcrypt.hash
         }); // bcrypt.genSalt
     }); // app.get
-  
+
 }; // module.exports
