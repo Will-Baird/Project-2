@@ -3,7 +3,6 @@ var db = require("../models");
 
 var bcrypt = require('bcryptjs');
 
-
 module.exports = function (app, passport) {
     app.get("/", function (req, res) {
         res.render('index');
