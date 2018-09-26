@@ -6,6 +6,7 @@ module.exports = function (sequelize, DataTypes) {
         department: DataTypes.STRING,
         price: DataTypes.INTEGER,
         quantity: DataTypes.INTEGER,
+        userid: DataTypes.INTEGER
     });
     return product;
 };

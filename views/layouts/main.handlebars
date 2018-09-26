@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-		<meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <title>Title to be determined</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <meta name="description" content="Animated Swatch Book with CSS3 and jQuery" />
-        <meta name="keywords" content="swatch book, css3, jquery, animated, rotation, transition, folding fan" />
-        <meta name="author" content="Codrops" />
-        <link rel="shortcut icon" href="../favicon.ico"> 
-        <link rel="stylesheet" type="text/css" href="/assets/SwatchBook2/css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/SwatchBook2/css/style3.css" />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Title to be determined</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Animated Swatch Book with CSS3 and jQuery" />
+    <meta name="keywords" content="swatch book, css3, jquery, animated, rotation, transition, folding fan" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/assets/SwatchBook2/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/SwatchBook2/css/style3.css" />
 
-		<link href='http://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet">
-		<script type="text/javascript" src="/assets/SwatchBook2/js/modernizr.custom.79639.js"></script> 
-        <script type="text/javascript" src="/assets/js/app.js"></script> 
-        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-       
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-		<!-- Materialize Links -->
-		   <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:700,300,300italic' rel='stylesheet'
+        type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/SwatchBook2/js/modernizr.custom.79639.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
-         <!-- Compiled and minified JavaScript -->
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
-           {{!-- Icons Package for Materialize --}}
-           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-		<!--[if lte IE 8]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
-    </head>
-     <body>
- 
+    <!-- Materialize Links -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    {{!-- Icons Package for Materialize --}}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/app.js"></script>
+    <!--[if lte IE 8]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
+</head>
+
+<body>
+
     {{{body}}}
-		<script type="text/javascript" src="/assets/SwatchBook2/js/jquery.swatchbook.js"></script>
-		<script type="text/javascript">
-			$(function() {
-			
-				$( '#sb-container' ).swatchbook( {
-					// number of degrees that is between each item
-					angleInc : 30,
-					neighbor : 15,
-					// if it should be closed by default
-					initclosed : true,
-					// index of the element that when clicked, triggers the open/close function
-					// by default there is no such element
-					closeIdx : 11
-				} );
-			
-			});
-		</script>
-   
-    </body>
+    <script type="text/javascript" src="/assets/SwatchBook2/js/jquery.swatchbook.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#sb-container').swatchbook({
+                // number of degrees that is between each item
+                angleInc: 30,
+                neighbor: 15,
+                // if it should be closed by default
+                initclosed: true,
+                // index of the element that when clicked, triggers the open/close function
+                // by default there is no such element
+                closeIdx: 11
+            });
+
+        });
+    </script>
+
+</body>
 
 </html>
+
 </html>

@@ -9,8 +9,9 @@ module.exports = function (app, passport) {
     });
 
 
-    app.get("/seller", function (req, res) {
-        res.render('seller');
+
+    app.get("/api/currentUser", function (req, res) {
+       res.send(req.user.id)
     });
 
 
@@ -32,20 +33,15 @@ module.exports = function (app, passport) {
 
         var handlebarsObj = [];
         db.products.findAll({
-            where: { department: 'Sports' }
+            where: { department: 'sports/outdoors' }
         }).then(function (results) {
             // results.forEach(function (item) {
             //     handlebarsObj.push(item)
             // });
             res.render('products', {handlebarsObj:results})
         });
-<<<<<<< HEAD
-
-        res.render('products', handlebarsObj)
-=======
         // replace with new handlebars↓
         // res.render('products', handlebarsObj)
->>>>>>> master
     });
 
     app.get("/api/books", function (req, res) {
@@ -90,18 +86,36 @@ module.exports = function (app, passport) {
     });
 
 
+    app.get("/api/seller/:id", function (req, res) {
+        var handlebarsObj = [];
+        db.products.findAll({
+            where: { userid: req.params.id }
+        }).then(function (results) {
+            results.forEach(function (item) {
+                handlebarsObj.push(item)
+            });
+        });
+
+        res.render('products', handlebarsObj)
+    });
+
+
+
+
+    app.get("/seller", function (req, res) {
+        res.render('seller')
+    });
+
+
     app.post("/api/post", function (req, res) {
         db.products.create({
             product_name: req.body.product_name,
             description: req.body.description,
-<<<<<<< HEAD
             img_url: req.body.imgURL,
-=======
-            url: req.body.url,
->>>>>>> master
             department: req.body.department,
             price: req.body.price,
-            quantity: req.body.quantity
+            quantity: req.body.quantity,
+            userid: req.user.id
         }).then(function (post) {
             res.json(post)
         });
