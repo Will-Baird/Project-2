@@ -40,7 +40,6 @@ module.exports = function (app, passport) {
             // });
             res.render('products', {handlebarsObj:results})
         });
-        // replace with new handlebars↓
         // res.render('products', handlebarsObj)
     });
 
@@ -193,5 +192,64 @@ module.exports = function (app, passport) {
             }); // bcrypt.hash
         }); // bcrypt.genSalt
     }); // app.get
+
+    app.get("/api/cart", function(req, res) {
+        if (!req.user) {
+            res.render("index");
+        }
+
+        var handlebarsObj = [];
+        db.cart.findAll({
+            where: { user_id: req.user.id },
+            attributes:["product_id"]}).then(function (results) {
+                if(!results) res.redirect("/");
+
+                JSON.stringify(results)
+                for(var i = 0; i < results.length; i++) {
+                    handlebarsObj.push(results[i].product_id)
+                }
+
+                if (handlebarsObj) {
+                    searchProduct(handlebarsObj);
+                }
+        });
+
+        function searchProduct(handlebarsObj) {
+            // console.log(handlebarsObj);
+
+            var productsObj = [];
+
+            for(var i = 0; i < handlebarsObj.length; i++) {
+                db.products.findAll({
+                    where: {id: handlebarsObj[i]}
+                }).then(function(results) {
+                    if(!results) res.redirect("/");
+
+                    JSON.stringify(results);
+                    console.log(JSON.stringify(results));
+
+                    for(var i = 0; i < results.length; i++) {
+                        var x = JSON.stringify(results[i]);
+                    productsObj.push(JSON.parse(x))
+                    }
+
+                    console.log("PRODUCTS " + productsObj);
+                    res.render("cart", {productsObj: productsObj});
+                })
+            }
+        } 
+
+    }); // app.get
+
+    app.delete("/api/cart/delete", function(req,res) {
+        db.cart.destroy({
+            where: {
+                product_id: req.body.productId,
+                user_id: req.user.id
+            }
+        }).then(function(results) {
+            res.redirect('back');
+        });
+    }); // app.delete
 
 }; // module.exports

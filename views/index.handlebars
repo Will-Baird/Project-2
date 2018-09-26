@@ -1,202 +1,160 @@
-        <div class="container">
-			
-	<header>
-			
-				<h1 id="appTitle">eShop It</h1>
-				
-				<div class="support-note"><!-- let's check browser support with modernizr -->
-					<!--span class="no-cssanimations">CSS animations are not supported in your browser</span-->
-					<span class="no-csstransforms">CSS transforms are not supported in your browser</span>
-					<!--span class="no-csstransforms3d">CSS 3D transforms are not supported in your browser</span-->
-					<span class="no-csstransitions">CSS transitions are not supported in your browser</span>
-					<span class="note-ie">Sorry, only modern browsers.</span>
-				</div>
-	</header>
-	
-{{!-- Shopping cart button to trigger the sidenav
-			<nav> <!-- navbar content here  --> </nav>
+<div class="container">
 
-  <ul id="slide-out" class="sidenav">
-      <div class="container center">
-          <div class="col-sm-12">
-              <div class="row" id="nameSection">
-                  <div class="userNameHolder">
-                      <h3>John Doe</h3>
-                  </div>
-              </div>
-              <hr>
-              <div class="row" id="itemSection">
-                  <div class="itemSectionTitle">
-                      <h3>Items Ready for Purchase:</h3>
-                  </div>
-              </div>
-              <div class="row" id="itemList">
-                  <div class="itemListHolder">
-                  </div>
-              </div>
-              <div class="row" id="totalCost">
-                  <div class="totalCostHolder">
-                      <h3>Total Cost:</h3>
-                  </div>
-              </div>
-          </div>
-      </div>
+    <header>
 
-    <li><div class="user-view">
-      
-  </ul>
- 
-  
-  <a href="#" data-target="slide-out" class="sidenav-trigger btn-floating btn-large cyan pulse"><i class="material-icons">shopping_cart</i></a> --}}
+        <h1 id="appTitle">eShop It</h1>
 
+        <div class="support-note">
+            <!-- let's check browser support with modernizr -->
+            <!--span class="no-cssanimations">CSS animations are not supported in your browser</span-->
+            <span class="no-csstransforms">CSS transforms are not supported in your browser</span>
+            <!--span class="no-csstransforms3d">CSS 3D transforms are not supported in your browser</span-->
+            <span class="no-csstransitions">CSS transitions are not supported in your browser</span>
+            <span class="note-ie">Sorry, only modern browsers.</span>
+        </div>
+    </header>
 
-								
-{{!--Login and Register Modal  --}}                           
-              <!-- Modal Trigger -->
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col s12">
-                        <a href="#login"  class="btn btn-large teal modal-trigger" id="modal">Login</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <h6 id="newUser">New User?</h6>
-                        <a href="#register" class="btn btn-small teal modal-trigger" id="modal">Signup</a>
-                    </div>
+    {{!--Login and Register Modal --}}
+    <!-- Modal Trigger -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col s12">
+                <a href="#login" class="btn btn-large teal modal-trigger" id="modal">Login</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <h6 id="newUser">New User?</h6>
+                <a href="#register" class="btn btn-small teal modal-trigger" id="modal">Signup</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="login">
+        <div class='modal-content center'>
+            <h4>Login Below:</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
                 </div>
             </div>
-            <div class="modal" id="login">
-               <div class='modal-content center'> 
-                 <h4>Login Below:</h4>
-                    <div class="row">
-                         <div class="input-field col s12">
-                           <input id="email" type="email" class="validate">
-                           <label for="email">Email</label>
-                         </div>
-                    </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light red" type="submit" name="action" id="closeBtn">Cancel
+                    <i class="material-icons right">close</i>
+                </button>
+                <button class="btn waves-effect waves-light teal" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<!-- Code for User Registration Modal -->
+<div class="container-fluid">
+    <!-- Modal Trigger -->
+    <div class="modal" id="register">
+        <div class='modal-content center'>
+            <h4>Register Below:</h4>
+            <div class="row">
+                <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                           <input id="password" type="password" class="validate">
-                           <label for="password">Password</label>
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First and Last Name</label>
                         </div>
                     </div>
                     <div class="row">
-                        <button class="btn waves-effect waves-light red" type="submit" name="action"  id="closeBtn">Cancel
-                           <i class="material-icons right">close</i>
+                        <div class="input-field col s12">
+                            <input id="newEmail" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="newPassword" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="newPhoneNumber" type="number" class="validate">
+                            <label for="phoneNumber">Phone Number (XXX-XXX-XXXX)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light red" type="submit" name="action" id="closeBtn">Cancel
+                            <i class="material-icons right">close</i>
                         </button>
                         <button class="btn waves-effect waves-light teal" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
-                </div>     
+                </form>
             </div>
-        </div>     
-    
-
-                <!-- Code for User Registration Modal -->
-                <div class = "container-fluid">
-                                  <!-- Modal Trigger -->
-                                <div class="modal" id="register">
-                                   <div class='modal-content center'> 
-                                     <h4>Register Below:</h4>
-                                          <div class="row">
-                                            <form class="col s12">
-		                                         <div class="row">
-				                                    <div class="input-field col s12">
-			 		                                    <input id="first_name" type="text" class="validate">
-			  	                                        <label for="first_name">First and Last Name</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="input-field col s12">
-                                                    <input id="newEmail" type="email" class="validate">
-                                                    <label for="email">Email</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                        <div class="input-field col s12">
-                                                        <input id="newPassword" type="password" class="validate">
-                                                        <label for="password">Password</label>
-                                                        </div>
-                                                </div>
-                                                    <div class="row">
-                                                        <div class="input-field col s12">
-                                                            <input id="newPhoneNumber" type="number" class="validate">
-                                                        <label for="phoneNumber">Phone Number (XXX-XXX-XXXX)</label>
-                                                        </div>
-                                                    </div>	
-                                                    <div class="row">
-                                                        <button class="btn waves-effect waves-light red" type="submit" name="action" id="closeBtn">Cancel
-                                                        <i class="material-icons right">close</i>
-                                                        </button>
-                                                        <button class="btn waves-effect waves-light teal" type="submit" name="action">Submit
-                                                        <i class="material-icons right">send</i>
-                                                        </button>
-                                                    </div>
-                                                </div>     
-                                            </div>
-                                        </div>     
-                                    </div>
-	</div>
-			</div>	
-			
-
+        </div>
+    </div>
+</div>
 
 {{!-- Landing page layout below --}}
 
+<section class="main">
 
-			<section class="main">
-			
-				<div id="sb-container" class="sb-container">
-					<div>
-						<h4><span>About Us</span></h4>
-                        <i class="material-icons" id="swatchIcon">people_outline</i>
-						<button class="directionBtn">Check it out</button>
-					</div>	
-                    <div>
-						<h4><span>Your Items For Sale</span></h4>
-                        <i class="material-icons" id="swatchIcon">account_box</i>
-						<button class="directionBtn"><a href="/api/fashion">Your Items</a></button>
-					</div>	
-					<div>
-						<h4><span>Sell Your Items</span></h4>
-                        <i class="material-icons" id="swatchIcon">attach_money</i>
-						<button class="directionBtn"><a href="/seller">Sell Your Item</a></button>
-					</div>	
-					<div>
-						<h4><span>Cars</span></h4>
-                        <i class="material-icons" id="swatchIcon">directions_car</i>
-						<button class="directionBtn"><a href="/api/cars" >Check It Out</a></button>										
-					</div>	
-					<div>
-						<h4><span>Books</span></h4>	
-                        <i class="material-icons" id="swatchIcon">book</i>
-						<button  class="directionBtn" ><a href="/api/books">Check It Out</button>									
-					</div>	
-					<div>
-						<h4>Sports/Outdoors</h4>	
-                        <i class="material-icons" id="swatchIcon">rowing</i>
-						<button class="directionBtn"><a href="/api/sports">Check It Out</a></button>										
-					</div>
-					<div>
-						<h4><span>Electronic</span></h4>
-                        <i class="material-icons" id="swatchIcon">phone_android</i>
-						<button class="directionBtn"><a href="/api/electronics" >Check It Out</a></button>											
-					</div>
-					<div>
-						<h4>Fashion Wear</h4>	
-                        <i class="material-icons" id="swatchIcon">face</i>
-						<button class="directionBtn"><a href="/api/fashion" >Check It Out</a></button>										
-					</div>
-					<div>
-						<span class="sb-toggle">Click To Open</span>
-						<h5>Welcome</h5>											
-					</div>
-					
-					
-				</div><!-- sb-container -->
-				
-			</section>
-			
+    <div id="sb-container" class="sb-container">
+        <div>
+            <h4><span>About Us</span></h4>
+            <i class="material-icons" id="swatchIcon">people_outline</i>
+            <button class="directionBtn">Check it out</button>
         </div>
+        <div>
+            <h4><span>Your Items For Sale</span></h4>
+            <i class="material-icons" id="swatchIcon">account_box</i>
+            <button class="directionBtn"><a href="/api/fashion">Your Items</a></button>
+        </div>
+        <div>
+            <h4><span>Sell Your Items</span></h4>
+            <i class="material-icons" id="swatchIcon">attach_money</i>
+            <button class="directionBtn"><a href="/seller">Sell Your Item</a></button>
+        </div>
+        <div>
+            <h4><span>Cars</span></h4>
+            <i class="material-icons" id="swatchIcon">directions_car</i>
+            <button class="directionBtn"><a href="/api/cars">Check It Out</a></button>
+        </div>
+        <div>
+            <h4><span>Books</span></h4>
+            <i class="material-icons" id="swatchIcon">book</i>
+            <button class="directionBtn"><a href="/api/books">Check It Out</button>
+        </div>
+        <div>
+            <h4>Sports/Outdoors</h4>
+            <i class="material-icons" id="swatchIcon">rowing</i>
+            <button class="directionBtn"><a href="/api/sports">Check It Out</a></button>
+        </div>
+        <div>
+            <h4><span>Electronic</span></h4>
+            <i class="material-icons" id="swatchIcon">phone_android</i>
+            <button class="directionBtn"><a href="/api/electronics">Check It Out</a></button>
+        </div>
+        <div>
+            <h4>Fashion Wear</h4>
+            <i class="material-icons" id="swatchIcon">face</i>
+            <button class="directionBtn"><a href="/api/fashion">Check It Out</a></button>
+        </div>
+        <div>
+            <span class="sb-toggle">Click To Open</span>
+            <h5>Welcome</h5>
+        </div>
+
+
+    </div><!-- sb-container -->
+
+</section>
+			
+
