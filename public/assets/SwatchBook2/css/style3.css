@@ -331,7 +331,8 @@ span.sb-icon:before {
 }
 
 .error{
-	text-align: center;
+	text-align: center; 
+	margin: auto;
 }
 /* end of andrews xtra css */
 
