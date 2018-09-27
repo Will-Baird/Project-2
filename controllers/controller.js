@@ -9,79 +9,89 @@ module.exports = function (app, passport) {
     });
 
 
-    app.get("/seller", function (req, res) {
-        res.render('seller');
+    app.get("/api/currentUser", function (req, res) {
+        res.json(req.user)
     });
 
 
     app.get("/api/fashion", function (req, res) {
-        var handlebarsObj = [];
         db.products.findAll({
             where: { department: 'fashion' }
         }).then(function (results) {
-            results.forEach(function (item) {
-                handlebarsObj.push(item)
-            });
+            res.render('products', { handlebarsObj: results })
         });
 
-        res.render('products', handlebarsObj)
     });
 
 
     app.get("/api/sports", function (req, res) {
-
-        var handlebarsObj = [];
         db.products.findAll({
-            where: { department: 'Sports/Outdoors' }
+            where: { department: 'sports/outdoors' }
         }).then(function (results) {
-            // results.forEach(function (item) {
-            //     handlebarsObj.push(item)
-            // });
-            res.render('products', {handlebarsObj:results})
+            res.render('products', { handlebarsObj: results })
         });
-
-        // res.render('products', handlebarsObj)
     });
 
+
     app.get("/api/books", function (req, res) {
-        var handlebarsObj = [];
         db.products.findAll({
             where: { department: 'books' }
         }).then(function (results) {
-            results.forEach(function (item) {
-                handlebarsObj.push(item)
-            });
+            res.render('products', { handlebarsObj: results })
         });
-
-        res.render('products', handlebarsObj)
     });
 
 
     app.get("/api/cars", function (req, res) {
-        var handlebarsObj = [];
         db.products.findAll({
             where: { department: 'cars' }
         }).then(function (results) {
-            results.forEach(function (item) {
-                handlebarsObj.push(item)
-            });
+            res.render('products', { handlebarsObj: results })
         });
-
-        res.render('products', handlebarsObj)
     });
 
 
     app.get("/api/electronics", function (req, res) {
-        var handlebarsObj = [];
         db.products.findAll({
             where: { department: 'electronics' }
         }).then(function (results) {
-            results.forEach(function (item) {
-                handlebarsObj.push(item)
-            });
+            res.render('products', { handlebarsObj: results })
         });
+    });
 
-        res.render('products', handlebarsObj)
+
+    app.get("/api/seller/:id", function (req, res) {
+        db.products.findAll({
+            where: { userid: req.params.id }
+        }).then(function (results) {
+            res.render('products', { handlebarsObj: results })
+        });
+    });
+
+
+    app.get("/api/seller/current", function (req, res) {
+        if (!req.user) {
+            res.render('nologin')
+        }
+        else if (req.user) {
+            db.products.findAll({
+                where: { userid: req.user.id }
+            }).then(function (results) {
+                res.render('products', { handlebarsObj: results })
+            });
+        }
+    });
+
+
+
+
+    app.get("/seller", function (req, res) {
+        if (!req.user) {
+            res.render("nologin");
+        }
+        else if (req.user) {
+            res.render('seller')
+        }
     });
 
 
@@ -92,7 +102,8 @@ module.exports = function (app, passport) {
             img_url: req.body.imgURL,
             department: req.body.department,
             price: req.body.price,
-            quantity: req.body.quantity
+            quantity: req.body.quantity,
+            userid: req.user.id
         }).then(function (post) {
             res.json(post)
         });
@@ -171,25 +182,26 @@ module.exports = function (app, passport) {
         }); // bcrypt.genSalt
     }); // app.get
 
-    app.get("/api/cart", function(req, res) {
+    app.get("/api/cart", function (req, res) {
         if (!req.user) {
-            res.render("index");
+            res.render("nologin");
         }
 
         var handlebarsObj = [];
         db.cart.findAll({
             where: { user_id: req.user.id },
-            attributes:["product_id"]}).then(function (results) {
-                if(!results) res.redirect("/");
+            attributes: ["product_id"]
+        }).then(function (results) {
+            if (!results) res.redirect("/");
 
-                JSON.stringify(results)
-                for(var i = 0; i < results.length; i++) {
-                    handlebarsObj.push(results[i].product_id)
-                }
+            JSON.stringify(results)
+            for (var i = 0; i < results.length; i++) {
+                handlebarsObj.push(results[i].product_id)
+            }
 
-                if (handlebarsObj) {
-                    searchProduct(handlebarsObj);
-                }
+            if (handlebarsObj) {
+                searchProduct(handlebarsObj);
+            }
         });
 
         function searchProduct(handlebarsObj) {
@@ -197,35 +209,35 @@ module.exports = function (app, passport) {
 
             var productsObj = [];
 
-            for(var i = 0; i < handlebarsObj.length; i++) {
+            for (var i = 0; i < handlebarsObj.length; i++) {
                 db.products.findAll({
-                    where: {id: handlebarsObj[i]}
-                }).then(function(results) {
-                    if(!results) res.redirect("/");
+                    where: { id: handlebarsObj[i] }
+                }).then(function (results) {
+                    if (!results) res.redirect("/");
 
                     JSON.stringify(results);
                     console.log(JSON.stringify(results));
 
-                    for(var i = 0; i < results.length; i++) {
+                    for (var i = 0; i < results.length; i++) {
                         var x = JSON.stringify(results[i]);
-                    productsObj.push(JSON.parse(x))
+                        productsObj.push(JSON.parse(x))
                     }
 
                     console.log("PRODUCTS " + productsObj);
-                    res.render("cart", {productsObj: productsObj});
+                    res.render("cart", { productsObj: productsObj });
                 })
             }
-        } 
+        }
 
     }); // app.get
 
-    app.delete("/api/cart/delete", function(req,res) {
+    app.delete("/api/cart/delete", function (req, res) {
         db.cart.destroy({
             where: {
                 product_id: req.body.productId,
                 user_id: req.user.id
             }
-        }).then(function(results) {
+        }).then(function (results) {
             res.redirect('back');
         });
     }); // app.delete

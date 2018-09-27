@@ -304,3 +304,31 @@ span.sb-icon:before {
 
 
 
+/* andrews xtra css */
+.formHolder {
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    font-weight: bold;
+}
+
+.titleDiv{
+    text-align: center;
+}
+
+.wholeForm {
+    max-width: 960px;
+    margin: auto;
+}
+.selector{
+    display: inline;
+}
+
+.formGroup {
+    color: black;
+}
+/* end of andrews xtra css */
+
+
+
+
