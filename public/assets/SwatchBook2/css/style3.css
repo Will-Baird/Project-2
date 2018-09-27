@@ -313,7 +313,8 @@ span.sb-icon:before {
 }
 
 .titleDiv{
-    text-align: center;
+	text-align: center;
+	margin: auto;
 }
 
 .wholeForm {
@@ -325,7 +326,12 @@ span.sb-icon:before {
 }
 
 .formGroup {
-    color: black;
+	color: black;
+	margin: auto;
+}
+
+.error{
+	text-align: center;
 }
 /* end of andrews xtra css */
 

@@ -5,8 +5,18 @@ var bcrypt = require('bcryptjs');
 
 module.exports = function (app, passport) {
     app.get("/", function (req, res) {
-        res.render('index');
+        // if user is logged in
+        if (req.user) {
+            res.render('index');
+        }
+        // if user isnt logged in
+        else {
+            res.render('index');
+        }
+
     });
+
+
 
 
     app.get("/api/currentUser", function (req, res) {
@@ -241,5 +251,11 @@ module.exports = function (app, passport) {
             res.redirect('back');
         });
     }); // app.delete
+
+
+    app.use(function (req, res, next) {
+        res.status(404).render("404err")
+    })
+
 
 }; // module.exports
