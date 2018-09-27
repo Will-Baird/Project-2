@@ -3,11 +3,13 @@ $(document).ready(function () {
     $('select').formSelect();
 
 
-    
 
     $('#submit-seller').on('click', function (event) {
-        $.get('/api/currentUser',currentUser)
-        console.log(currentUser)
+        var currentID = ""
+        $.get('/api/currentUser', function (currentUser) {
+            currentID = currentUser.id
+        });
+
         event.preventDefault();
         var newProduct = {
             product_name: $('#product_name').val().trim(),
@@ -19,7 +21,8 @@ $(document).ready(function () {
         }
         $.post('/api/post', newProduct, function (response) {
             console.log("respons from post", response)
-             location.replace(`/api/seller/${currentUser}`);
+            location.replace(`/api/seller/${currentID}`);
+            currentID = ""
         })
         console.log("post successful ran")
     })
